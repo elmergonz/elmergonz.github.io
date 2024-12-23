@@ -1,2 +1,1 @@
-# kanonono.github.io
-KanoNono game
+Personal repo
