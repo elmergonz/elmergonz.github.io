@@ -1,43 +1,55 @@
-const CACHE_NAME = 'my-pwa-cache-v1';
-const urlsToCache = [
+const VERSION = 'v0.1.1';
+const CACHE_NAME = `miniature-happiness-${VERSION}`;
+
+const APP_STATIC_RESOURCES = [
     '/',
     '/index.html',
+    '/style.css',
     '/manifest.json',
     '/favicon.png',
     '/favicon.ico',
 ];
 
-// Install Service Worker
-self.addEventListener('install', (event) => {
+self.addEventListener("install", (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then((cache) => {
-                return cache.addAll(urlsToCache);
-            })
+        (async () => {
+            const cache = await caches.open(CACHE_NAME);
+            cache.addAll(APP_STATIC_RESOURCES);
+        })(),
     );
 });
 
-// Activate Service Worker
-self.addEventListener('activate', (event) => {
-    const cacheWhitelist = [CACHE_NAME];
+self.addEventListener("activate", (event) => {
     event.waitUntil(
-        caches.keys().then((cacheNames) => {
-            return Promise.all(
-                cacheNames.map((cacheName) => {
-                    if (!cacheWhitelist.includes(cacheName)) {
-                        return caches.delete(cacheName);
+        (async () => {
+            const names = await caches.keys();
+            await Promise.all(
+                names.map((name) => {
+                    if (name !== CACHE_NAME) {
+                        return caches.delete(name);
                     }
-                })
+                }),
             );
-        })
+            await clients.claim();
+        })(),
     );
 });
 
-// Fetch data from cache
-self.addEventListener('fetch', (event) => {
+self.addEventListener("fetch", (event) => {
+    
+    if (event.request.mode === "navigate") {
+        event.respondWith(caches.match("/"));
+        return;
+    }
+
     event.respondWith(
-        caches.match(event.request).then((response) => {
-            return response || fetch(event.request);
-        })
+        (async () => {
+            const cache = await caches.open(CACHE_NAME);
+            const cachedResponse = await cache.match(event.request.url);
+
+            if (cachedResponse) return cachedResponse;
+
+            return new Response(null, { status: 404 });
+        })(),
     );
 });
