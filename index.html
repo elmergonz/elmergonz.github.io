@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miniature Happiness</title>
+
+    <link rel="icon" href="/assets/favicon-CAY1GxOY.ico">
+    <link rel="manifest" href="/assets/manifest-BVx-3V2H.json">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" crossorigin src="/assets/index-CBxWwThx.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-_PY7xwDv.css">
+</head>
+
+<body>
+    <h1>Miniature Happiness ✨</h1>
+
+    <p>User: <span id="user-logged"></span></p>
+
+    <div id="login-section">
+        <h2>Login</h2>
+
+        <div>
+            <label for="email-input">Email </label>
+            <input type="text" name="email-input" id="email-input">
+        </div>
+        <div>
+            <label for="pass-input">Password </label>
+            <input type="password" name="pass-input" id="pass-input" required>
+        </div>
+        <input type="submit" value="login" onclick="authenticate()">
+    </div>
+
+
+    <div id="catalog-section">
+        <h2>Catalog</h2>
+
+        <div id="add-product-section">
+            <label for="product-input">Add product: </label>
+            <input type="text" name="product-input" id="product-input">
+            <input type="button" value="add" onclick="addProduct()">
+        </div>
+
+        <ul id="product-list">
+        </ul>
+    </div>
+
+    <p>v1.1</p>
+</body>
+
+</html>
