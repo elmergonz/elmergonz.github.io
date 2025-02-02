@@ -3,49 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miniature Happiness</title>
-
     <link rel="icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Miniature Happiness</title>
 </head>
 
 <body>
-    <h1>Miniature Happiness ✨</h1>
-
-    <p>User: <span id="user-logged"></span></p>
-
-    <div id="login-section">
-        <h2>Login</h2>
-
-        <div>
-            <label for="email-input">Email </label>
-            <input type="text" name="email-input" id="email-input">
-        </div>
-        <div>
-            <label for="pass-input">Password </label>
-            <input type="password" name="pass-input" id="pass-input" required>
-        </div>
-        <input type="submit" value="login" onclick="authenticate()">
-    </div>
-
-
-    <div id="catalog-section">
-        <h2>Catalog</h2>
-
-        <div id="add-product-section">
-            <label for="product-input">Add product: </label>
-            <input type="text" name="product-input" id="product-input">
-            <input type="button" value="add" onclick="addProduct()">
-        </div>
-
-        <ul id="product-list">
-        </ul>
-    </div>
-
-    <p>v1.1</p>
-    <script src="js/main.js" type="module"></script>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
 </body>
 
 </html>
