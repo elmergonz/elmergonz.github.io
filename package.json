@@ -4,11 +4,11 @@
   "description": "Personal repo",
   "main": "index.js",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -17,13 +17,15 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/elmergonz/elmergonz.github.io/issues"
   },
   "homepage": "https://github.com/elmergonz/elmergonz.github.io",
   "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "gh-pages": "^6.3.0",
+    "svelte": "^5.19.6",
     "vite": "^6.0.11"
   },
   "dependencies": {
