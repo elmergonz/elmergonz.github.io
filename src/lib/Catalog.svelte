@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import { user, signOut } from "../sharedAuth.svelte";
     import { supabase } from "../supabaseClient";
+    import Product from "./Product.svelte";
 
     let products = $state([]);
     let productName = $state("");
@@ -79,16 +80,7 @@
 
     <ul id="product-list">
         {#each products as product}
-            <li id={`product-${product.id}`}>
-                {product.name}
-                {#if !user.isAnon}
-                    <input
-                        type="button"
-                        value="delete"
-                        onclick={deleteProduct(product.id)}
-                    />
-                {/if}
-            </li>
+            <Product {product} {user} />
         {/each}
     </ul>
 </div>
