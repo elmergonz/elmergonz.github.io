@@ -50,5 +50,5 @@
     </div>
 
     <input type="submit" value="Login" onclick={authenticate} />
-    <input type="submit" value="Continue as Anonimous" onclick={continueAnon} />
+    <input type="submit" value="Continue as Anonymous" onclick={continueAnon} />
 </div>
