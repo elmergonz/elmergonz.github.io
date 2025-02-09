@@ -3,7 +3,8 @@ import { supabase } from "./supabaseClient";
 export const user = $state({
     name: null,
     isAnon: null,
-    isAuthenticated: false
+    isAuthenticated: false,
+    isValentine: false
 });
 
 export async function getCurrentUser() {
