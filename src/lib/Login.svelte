@@ -24,6 +24,10 @@
     function continueAnon() {
         user.isAuthenticated = true;
     }
+
+    function startValentine() {
+        user.isValentine = true;
+    }
 </script>
 
 <div id="login-section">
@@ -51,4 +55,10 @@
 
     <input type="submit" value="Login" onclick={authenticate} />
     <input type="submit" value="Continue as Anonymous" onclick={continueAnon} />
+    <input
+        class="valentine"
+        type="submit"
+        value="Valentine"
+        onclick={startValentine}
+    />
 </div>
